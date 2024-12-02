@@ -3,6 +3,7 @@ import logging
 import os
 
 from aiogram import Bot, Dispatcher, executor, types
+from dotenv import load_dotenv
 
 import exceptions
 import expenses
@@ -11,6 +12,8 @@ from middlewares import AccessMiddleware
 
 
 logging.basicConfig(level=logging.INFO)
+
+load_dotenv()
 
 API_TOKEN = os.getenv("TELEGRAM_API_TOKEN")
 ACCESS_ID = os.getenv("TELEGRAM_ACCESS_ID")
