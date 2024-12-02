@@ -2,7 +2,6 @@
 import logging
 import os
 
-import aiohttp
 from aiogram import Bot, Dispatcher, executor, types
 
 import exceptions
@@ -14,14 +13,9 @@ from middlewares import AccessMiddleware
 logging.basicConfig(level=logging.INFO)
 
 API_TOKEN = os.getenv("TELEGRAM_API_TOKEN")
-PROXY_URL = os.getenv("TELEGRAM_PROXY_URL")
-PROXY_AUTH = aiohttp.BasicAuth(
-    login=os.getenv("TELEGRAM_PROXY_LOGIN"),
-    password=os.getenv("TELEGRAM_PROXY_PASSWORD")
-)
 ACCESS_ID = os.getenv("TELEGRAM_ACCESS_ID")
 
-bot = Bot(token=API_TOKEN, proxy=PROXY_URL, proxy_auth=PROXY_AUTH)
+bot = Bot(token=API_TOKEN)
 dp = Dispatcher(bot)
 dp.middleware.setup(AccessMiddleware(ACCESS_ID))
 
@@ -79,7 +73,7 @@ async def list_expenses(message: types.Message):
         return
 
     last_expenses_rows = [
-        f"{expense.amount} руб. на {expense.category_name} — нажми "
+        f"{expense.amount} юсд. на {expense.category_name} — нажми "
         f"/del{expense.id} для удаления"
         for expense in last_expenses]
     answer_message = "Последние сохранённые траты:\n\n* " + "\n\n* "\
@@ -96,7 +90,7 @@ async def add_expense(message: types.Message):
         await message.answer(str(e))
         return
     answer_message = (
-        f"Добавлены траты {expense.amount} руб на {expense.category_name}.\n\n"
+        f"Добавлены траты {expense.amount} юсд на {expense.category_name}.\n\n"
         f"{expenses.get_today_statistics()}")
     await message.answer(answer_message)
 

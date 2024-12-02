@@ -56,8 +56,8 @@ def get_today_statistics() -> str:
     result = cursor.fetchone()
     base_today_expenses = result[0] if result[0] else 0
     return (f"Расходы сегодня:\n"
-            f"всего — {all_today_expenses} руб.\n"
-            f"базовые — {base_today_expenses} руб. из {_get_budget_limit()} руб.\n\n"
+            f"всего — {all_today_expenses} юсд.\n"
+            f"базовые — {base_today_expenses} юсд. из {_get_budget_limit()} юсд.\n\n"
             f"За текущий месяц: /month")
 
 
@@ -79,9 +79,9 @@ def get_month_statistics() -> str:
     result = cursor.fetchone()
     base_today_expenses = result[0] if result[0] else 0
     return (f"Расходы в текущем месяце:\n"
-            f"всего — {all_today_expenses} руб.\n"
-            f"базовые — {base_today_expenses} руб. из "
-            f"{now.day * _get_budget_limit()} руб.")
+            f"всего — {all_today_expenses} юсд.\n"
+            f"базовые — {base_today_expenses} юсд. из "
+            f"{now.day * _get_budget_limit()} юсд.")
 
 
 def last() -> List[Expense]:
