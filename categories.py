@@ -49,14 +49,14 @@ class Categories:
 
     def get_category(self, category_name: str) -> Category:
         """Возвращает категорию по одному из её алиасов."""
-        finded = None
+        is_found = None
         other_category = None
         for category in self._categories:
-            if category.codename == "other":
+            if category.codename == "uncategorized":
                 other_category = category
             for alias in category.aliases:
                 if category_name in alias:
-                    finded = category
-        if not finded:
-            finded = other_category
-        return finded
+                    is_found = category
+        if not is_found:
+            is_found = other_category
+        return is_found

@@ -21,16 +21,16 @@ create table expense(
 
 insert into category (codename, name, is_base_expense, aliases)
 values
-    ("travel", "travel", false, "travel"),
+    ("travel", "travel", false, "hotel, flight"),
     ("banking", "banking", false, ""),
-    ("healthcare", "healthcare", true, "healthcare"),
-    ("shopping", "shopping", false, "shopping"),
-    ("utilities", "utilities", true, "utilities"),
+    ("healthcare", "healthcare", true, "drugs, procedure"),
+    ("shopping", "shopping", false, "clothes, tech"),
+    ("utilities", "utilities", true, "utilities, rent"),
     ("tax", "tax", false, "tax"),
     ("grocery", "grocery", true, "grocery"),
     ("entertainment", "entertainment", false, "entertainment"),
-    ("food", "food", true, "food"),
-    ("uncategorized", "uncategorized", false, "uncategorized");
+    ("food", "food", true, "food, food_delivery, restaurant"),
+    ("uncategorized", "uncategorized", false, "other");
 
 
 insert into budget(codename, daily_limit) values ('base', 50);

@@ -93,7 +93,7 @@ async def add_expense(message: types.Message):
         await message.answer(str(e))
         return
     answer_message = (
-        f"Добавлены траты {expense.amount} юсд на {expense.category_name}.\n\n"
+        f"Добавлены траты {expense.amount} gel на {expense.category_name}.\n\n"
         f"{expenses.get_today_statistics()}")
     await message.answer(answer_message)
 
